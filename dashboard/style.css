@@ -1,0 +1,226 @@
+/* ============================================
+   个人财务看板 — 样式
+   ============================================ */
+
+:root {
+  --bg: #f5f5f5;
+  --card-bg: #ffffff;
+  --text: #1f2937;
+  --text-secondary: #6b7280;
+  --border: #e5e7eb;
+  --expense: #ef4444;
+  --income: #22c55e;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 24px;
+}
+
+header h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.refresh-hint {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* ---- 概览卡片 ---- */
+.overview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.card .label {
+  display: block;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.card .value {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.card.expense .value { color: var(--expense); }
+.card.income .value { color: var(--income); }
+.card.balance .value.positive { color: var(--income); }
+.card.balance .value.negative { color: var(--expense); }
+.card.daily .value { color: #3b82f6; }
+
+/* ---- 洞察卡片 ---- */
+.insight-card {
+  background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+  border: 1px solid #d1d5db;
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.insight-card h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.insight-card p {
+  font-size: 14px;
+  color: #374151;
+  white-space: pre-line;
+}
+
+/* ---- 图表 ---- */
+.charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.chart-box {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.chart-box h3 {
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+.chart-box canvas {
+  height: 280px !important;
+}
+
+/* ---- 最近记录表 ---- */
+.recent {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.recent h3 {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 2px solid var(--border);
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+td.empty {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 32px 12px;
+}
+
+.amount {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.expense-row .amount { color: var(--expense); }
+.income-row .amount { color: var(--income); }
+
+.note {
+  color: var(--text-secondary);
+  font-size: 13px;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cat-tag {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+footer {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 13px;
+  padding: 16px 0;
+}
+
+/* ---- 响应式 ---- */
+@media (max-width: 768px) {
+  .overview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .charts {
+    grid-template-columns: 1fr;
+  }
+  header h1 {
+    font-size: 20px;
+  }
+  .card .value {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .overview {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .card {
+    padding: 14px;
+  }
+  .card .value {
+    font-size: 16px;
+  }
+}
