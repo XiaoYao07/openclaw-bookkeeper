@@ -27,7 +27,7 @@
 ## 前置要求
 
 - [Node.js](https://nodejs.org) (v18+)
-- [DeepSeek API Key](https://platform.deepseek.com)（新用户有免费额度）
+- [DeepSeek API Key](https://platform.deepseek.com)
 - 实名认证的微信号
 - Windows / macOS / Linux
 
